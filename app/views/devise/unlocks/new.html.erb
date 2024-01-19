@@ -1,0 +1,22 @@
+<div class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Resend unlock instructions</h2>
+    
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, class: 'space-y-4' }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+
+      <div class="actions mt-6">
+        <%= f.submit "Resend unlock instructions", class: 'w-full p-2 text-center bg-blue-600 text-white rounded-md hover:bg-blue-700' %>
+      </div>
+    <% end %>
+    
+    <div class="mt-4 text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
