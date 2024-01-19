@@ -1,36 +1,130 @@
-<% content_for :title, "BGapp | Sign Up" %>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+    }
 
-<div class="bg-gray-100 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'space-y-4' }) do |f| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
-    
-      <div class="field">
-        <%= f.label :email, class: 'block text-sm font-medium text-gray-600' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'mt-1 p-2 w-full border rounded-md' %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password, class: 'block text-sm font-medium text-gray-600' %>
-        <% if @minimum_password_length %>
-          <em class="text-xs text-gray-500">( <%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password", class: 'mt-1 p-2 w-full border rounded-md' %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :password_confirmation, class: 'block text-sm font-medium text-gray-600' %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'mt-1 p-2 w-full border rounded-md' %>
-      </div>
-    
-      <div class="actions mt-6">
-        <%= f.submit "Sign up", class: 'w-full p-2 text-center text-white rounded-md hover:bg-blue-700', style: 'background-color: #3778c2;' %>
-      </div>
+    .container, .container-fluid, .container-xxl, .container-xl, .container-lg, .container-md, .container-sm {
+      padding-right: 0;
+      padding-left: 0;
+  }
+  
+  .mt-4 {
+    margin-top: 0 !important;
+}
+
+
+    .navbar {
+        width: 100%;
+    }
+
+    .login-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .login-nav span,
+    .navbar-brand,
+    .login-btn {
+        font-family: 'Proxima Nova', sans-serif;
+        font-weight: bold;
+        color: white;
+    }
+
+    .navbar-brand {
+        font-size: 24px;
+        text-decoration: none;
+    }
+
+    .login-btn {
+        background: none;
+        border: none;
+        text-decoration: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: lightgray;
+        text-align: center;
+        align-items: center;
+        margin: 5px 10px;
+        font-family: 'Proxima Nova', sans-serif;
+    }
+
+    .centered-links {
+      position: fixed;
+      bottom: 70px;
+      left: 0;
+      right: 0;
+      width: 70px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  
+    .centered-links a {
+        pointer-events: auto;
+    }
+
+    .form-wrapper {
+        margin-top: 20px;
+    }
+
+    .form-control {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px 20px;
+        border: 1px solid lightgray;
+    }
+
+    .btn-primary {
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+</style>
+
+<div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <nav class="navbar navbar-expand-lg" style="background-color: #3778c2;">
+            <div class="login-nav">
+                <%= link_to '<', root_path, class: "navbar-brand" %>
+                <span class="navbar-text">
+                    SIGN UP
+                </span>
+                <%= f.submit "Next", class: "login-btn" %>
+            </div>
+        </nav>
+
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="mt-3">
+            <div class="form-wrapper">
+
+                <div class="form-group">
+                    <%= f.text_field :name, class: 'form-control', placeholder: "Name", style: "color: lightgray;" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: "Email", style: "color: lightgray;" %>
+                </div>
+
+                <div class="form-group">
+                    <% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %> characters minimum)</em>
+                    <% end %><br />
+                    <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password", style: "color: lightgray;" %>
+                </div>
+
+                <div class="form-group">
+                    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: "Confirm Password", style: "color: lightgray;" %>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="centered-links">
+            <%= render "devise/shared/links" %>
+        </div>
     <% end %>
-    
-    <div class="mt-4 text-center">
-      <%= render "devise/shared/links" %>
-    </div>
-  </div>
 </div>
