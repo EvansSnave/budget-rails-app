@@ -1,7 +1,7 @@
 databases:
-  - name: budget-app-u
-    databaseName: budget-app-u
-    user: budget
+  - name: budget-app-development
+    databaseName: budget-app-development
+    user: budget-app
 
 services:
   - type: web
@@ -12,7 +12,7 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: budget-app-u
+          name: budget-app-development
           property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
