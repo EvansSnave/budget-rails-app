@@ -1,0 +1,45 @@
+<!-- app/views/categories/new.html.erb -->
+<% content_for :title, "BGapp | Add category" %>
+
+<div class="bg-gray-100 min-h-screen p-6">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+    
+    <%= form_with model: @category, local: true do |f| %>
+      <div class="field mb-4">
+        <%= f.label :name, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.text_field :name, class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+      
+      <div class="field mb-4">
+        <%= f.label :icon %>
+        <%= f.select :icon, options_for_select([
+          ['Drink', 'local_drink', {data: {icon: 'local_drink'}}],
+          ['Cafe', 'local_cafe', {data: {icon: 'local_cafe'}}],
+          ['Rice Bowl', 'rice_bowl', {data: {icon: 'rice_bowl'}}],
+          ['Food Bank', 'food_bank', {data: {icon: 'food_bank'}}],
+          ['Beverage', 'emoji_food_beverage', {data: {icon: 'emoji_food_beverage'}}],
+          ['Dinner Dining', 'dinner_dining', {data: {icon: 'dinner_dining'}}],
+          ['Lunch Dining', 'lunch_dining', {data: {icon: 'lunch_dining'}}],
+          ['Breakfast Dining', 'breakfast_dining', {data: {icon: 'breakfast_dining'}}],
+          ['Bakery Dining', 'bakery_dining', {data: {icon: 'bakery_dining'}}],
+          ['Room Service', 'room_service', {data: {icon: 'room_service'}}],
+          ['Green Salad', 'green_salad', {data: {icon: 'green_salad'}}],
+          ['Fruit Bowl', 'fruit_bowl', {data: {icon: 'fruit_bowl'}}],
+          ['Agriculture', 'agriculture', {data: {icon: 'agriculture'}}],
+          ['Eco Friendly', 'eco', {data: {icon: 'eco'}}],
+          ['Nature Food', 'emoji_nature', {data: {icon: 'emoji_nature'}}],
+          ['Greens', 'grass', {data: {icon: 'grass'}}],
+          ['Sprout', 'sprout', {data: {icon: 'sprout'}}]
+          # ... other icons
+        ]), {}, {class: 'select-icon'} %>
+    
+      </div>
+      
+      <div class="actions">
+        <%= f.submit "Add Category", class: 'w-full p-2 text-center text-white rounded-md hover:bg-blue-700', style: 'background-color: #3778c2;' %>
+        <%= link_to "Back", categories_path, class: "block w-full text-center text-white mt-4 rounded py-2", style: 'background-color: #434b54;', onmouseover: "this.style.backgroundColor='#626f7a'", onmouseout: "this.style.backgroundColor='#434b54'" %>
+
+      </div>
+    <% end %>
+  </div>
+</div>

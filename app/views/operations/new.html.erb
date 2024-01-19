@@ -1,0 +1,23 @@
+<% content_for :title, "BGapp | Add New Operation" %>
+<div class="bg-gray-100 min-h-screen p-6">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+
+    <%= form_with model: [@category, @operation], local: true, class: 'space-y-4' do |f| %>
+      <div class="field">
+        <%= f.label :name, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.text_field :name, class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+      <div class="field">
+        <%= f.label :amount, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.number_field :amount, class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Save", class: 'w-full p-2 text-center text-white rounded-md', style: 'background-color: #3778c2;', onmouseover: "this.style.backgroundColor='#305f91'", onmouseout: "this.style.backgroundColor='#3778c2'" %>
+      </div>
+    <% end %>
+
+    <div class="mt-4">
+      <%= link_to "Back", category_operations_path(@category), class: "block w-full text-center text-white rounded py-2", style: 'background-color: #434b54;', onmouseover: "this.style.backgroundColor='#626f7a'", onmouseout: "this.style.backgroundColor='#434b54'" %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<% content_for :title, "BGapp | Log In" %>
+<div class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+    
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'space-y-4' }) do |f| %>
+      <div class="field">
+        <%= f.label :email, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+    
+      <div class="field">
+        <%= f.label :password, class: 'block text-sm font-medium text-gray-600' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'mt-1 p-2 w-full border rounded-md' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="flex items-center mt-4">
+          <%= f.check_box :remember_me, class: "mr-2" %>
+          <%= f.label :remember_me, class: 'text-sm text-gray-600' %>
+        </div>
+      <% end %>
+    
+      <div class="actions mt-6">
+        <%= f.submit "Log in", class: 'w-full p-2 text-center text-white rounded-md hover:bg-blue-700', style: 'background-color: #3778c2;' %>
+      </div>
+    <% end %>
+    
+    <div class="mt-4 text-center">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
